@@ -30,7 +30,7 @@
   Ce projet a pour but de comparer différentes bases de données NoSQL.
   Nous allons prendre les bases données CouchBase et MongoDB.
   
-  
+ \newpage
 \section{La base de donnée CouchBase}
 \subsection{Les modalités d’installation}
   \paragraph{} TODO
@@ -49,7 +49,7 @@
   
   
   
-  
+\newpage
 \section{La base de donnée MongoDB}
 \subsection{Les modalités d’installation}
   \paragraph{Téléchargement} Pour l'installation de MongoDB, il vous suffira
@@ -106,14 +106,29 @@
 \subsection{Le langage de recherche}
   \paragraph{} Pour rechercher des documents dans MongoDB, nous utiliserons la 
   fonction \emph{find()} sur nos collections. Cette commande peut prendre jusqu'à
-  deux arguments:
+  deux arguments sous format JSON:
   \begin{itemize}
     \item Le premier permet de déterminer la clause \textbf{where}.
     \item La seconde permet de spécifier les champs à afficher.
   \end{itemize} 
-  Ces deux arguments sont des objets JSON.
 \subsection{L’indexation interne}
-  \paragraph{} TODO
+  \paragraph{} Pour chaque document ajouter dans une collection, MongoDB lui ajoute
+  un champs \emph{\_id}. C'est ce champs qui sera indexé par défaut. Il est 
+  possible de lister tous les indexes d'une collection avec la commande suivant:
+  \begin{lstlisting}
+  > db.medarticles.getIndexes()
+  \end{lstlisting}
+  \includegraphics[scale=0.8]{mongodb/getindexes.png}\\
+  
+  \paragraph{} Vous pouvez cependant ajouter vos propres indexes avec la commande
+  \emph{ensureIndex()}. L'objet JSON passé en argument doit être une liste de \textbf{int}.
+  Le nom doit être le champs à indexer et le \textbf{int} doit être égal à 1 ou -1; 
+  la valeur 1 correspond à un tri ascendant et la valeur -1 à un tri descendant.
+  \includegraphics[scale=0.8]{mongodb/ensureIndex.png}\\
+  
+  \paragraph{} Afin de mesurer l'impact de vos indexes, à chaque recherche vous pouvez
+  ajouter la méthode \emph{explain}:\\
+  \includegraphics[scale=0.8]{mongodb/find_explain2.png}\\
 \subsection{Le support de la concurrence d’accès}
   \paragraph{} TODO
 \subsection{L’architecture du système}
@@ -121,7 +136,7 @@
 \subsection{Les techniques de distribution}
   \paragraph{} TODO
 
-
+\newpage
 \section{Conclusion}
   \paragraph{} TODO
   
