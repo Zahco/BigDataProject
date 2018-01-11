@@ -62,6 +62,7 @@
   \begin{lstlisting}
   $ ./bin/mongod
   \end{lstlisting}
+  \includegraphics[scale=0.8]{mongodb/lancement_mongo.png}\\
   Vous pourrez ensuite accéder à MongoDB en lançant le client grâce à la commande suivante:
   \begin{lstlisting}
   $ ./bin/mongo
@@ -73,14 +74,44 @@
   avec la commande précédente. Nous allons ajouter une nouvelle base de donnée. 
   Vous pouvez lister les différentes base de données déjà présentes avec la commande:
   \begin{lstlisting}
-  > show db
+  > show dbs
   \end{lstlisting}
+  \includegraphics[scale=0.8]{mongodb/show_dbs.png}\\
   Puis pour créer et/ou utiliser notre base de donnée, utilisez:
   \begin{lstlisting}
   > use DATABASE
   \end{lstlisting}
+  \includegraphics[scale=0.8]{mongodb/use_dbname.png}\\
+  Vous pouvez lister vos collections de document avec la commande suivante:
+  \begin{lstlisting}
+  > show collections
+  \end{lstlisting}
+  \includegraphics[scale=0.8]{mongodb/show_collections.png}\\
+  
+  \paragraph{Insertion de documents}
+  Vous pouvez maintenant sortir du client MongoDB. Vos documents doivent être en
+  format json sous forme d'objet. Vous trouverez un exemple avec le fichier 
+  \emph{prettyAlcoholism.json}. Nous allons utiliser la commande
+  \emph{mongoimport} afin d'ajouter nos document dans notre base:
+  \begin{lstlisting}
+  $ ./bin/mongoimport --db bigdata --collection medarticles 
+  --file ../Projet/prettyAlcoholism.json
+  \end{lstlisting}
+  \includegraphics[scale=0.8]{mongodb/insertiondedoc2.png}\\
+  \paragraph{} Vous pouvez cependant ajouter des document directement à partir
+  du client MongoDB avec les commandes \emph{import} ou \emph{importMany}.
+  Ces commandes sont utiles dans le cas où nous avons peu de document ou des
+  document de petites tailles.
+  
 \subsection{Le langage de recherche}
-  \paragraph{} TODO
+  \paragraph{} Pour rechercher des documents dans MongoDB, nous utiliserons la 
+  fonction \emph{find()} sur nos collections. Cette commande peut prendre jusqu'à
+  deux arguments:
+  \begin{itemize}
+    \item Le premier permet de déterminer la clause \textbf{where}.
+    \item La seconde permet de spécifier les champs à afficher.
+  \end{itemize} 
+  Ces deux arguments sont des objets JSON.
 \subsection{L’indexation interne}
   \paragraph{} TODO
 \subsection{Le support de la concurrence d’accès}
