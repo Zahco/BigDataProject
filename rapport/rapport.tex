@@ -52,9 +52,33 @@
   
 \section{La base de donnée MongoDB}
 \subsection{Les modalités d’installation}
-  \paragraph{} TODO
+  \paragraph{Téléchargement} Pour l'installation de MongoDB, il vous suffira
+  dans un premier temps de \href{https://www.mongodb.com/download-center#community}{télécharger} 
+  l'archive contenant MongoDB.
+  \paragraph{} Après le téléchargement de l'archive, vous pourrez la décompresser. Avant
+  de lancer le serveur, il vous faudra créer le dossier \textbf{/data/db}. Ce dossier
+  contiendra toutes les bases de MongoDB.
+  \paragraph{} Enfin vous pouvez lancer le serveur MongoDB avec la commande:
+  \begin{lstlisting}
+  $ ./bin/mongod
+  \end{lstlisting}
+  Vous pourrez ensuite accéder à MongoDB en lançant le client grâce à la commande suivante:
+  \begin{lstlisting}
+  $ ./bin/mongo
+  \end{lstlisting}
+  
+  
 \subsection{Les méthodes d’insertion de données}
-  \paragraph{} TODO
+  \paragraph{Création de la base} Avant toute insertion, lancez le client MongoDB
+  avec la commande précédente. Nous allons ajouter une nouvelle base de donnée. 
+  Vous pouvez lister les différentes base de données déjà présentes avec la commande:
+  \begin{lstlisting}
+  > show db
+  \end{lstlisting}
+  Puis pour créer et/ou utiliser notre base de donnée, utilisez:
+  \begin{lstlisting}
+  > use DATABASE
+  \end{lstlisting}
 \subsection{Le langage de recherche}
   \paragraph{} TODO
 \subsection{L’indexation interne}
