@@ -110,7 +110,19 @@
   \begin{itemize}
     \item Le premier permet de déterminer la clause \textbf{where}.
     \item La seconde permet de spécifier les champs à afficher.
-  \end{itemize} 
+  \end{itemize}
+  \subsubsection{Les conditions}
+    \paragraph{} Vous pouvez effectuer une recherche en indiquant la valeur d'un
+    champs comme ceci:\\
+    \includegraphics[scale=0.8]{mongodb/recherche_find1.png}\\
+    En ajoutant la fonction \emph{pretty()}, le résultat sera indenté.
+    Vous pouvez utiliser les tableaux \emph{\$and} et \emph{\$or} afin de constituer
+    des recherches plus complexes.
+  \subsubsection{L'affichage}
+    \paragraph{} Vous pouvez aussi n'afficher que certain champs dans le résultat
+    de votre recherche:\\
+    \includegraphics[scale=0.8]{mongodb/recherche_find2.png}\\
+  
 \subsection{L’indexation interne}
   \paragraph{} Pour chaque document ajouter dans une collection, MongoDB lui ajoute
   un champs \emph{\_id}. C'est ce champs qui sera indexé par défaut. Il est 
@@ -130,11 +142,16 @@
   ajouter la méthode \emph{explain}:\\
   \includegraphics[scale=0.8]{mongodb/find_explain2.png}\\
 \subsection{Le support de la concurrence d’accès}
-  \paragraph{} TODO
+  \paragraph{} MongoDB support totalement la concurrence d'accès.
+  Il permet à plusieurs clients de lire et écrire les mêmes données.
+  MongoDB gère la concurrence à l'aide de verrous. Certaines opérations entraînent
+  un verrouillage de la collection ou même de la base de données. Par exemple
+  les opérations d'insertion, de suppression, de modification ou encore de
+  création d'index entraînent un verrouillage de la base de données.
 \subsection{L’architecture du système}
-  \paragraph{} TODO
+  \includegraphics[scale=0.215]{mongodb/mongodb-arch-diag.png}\\
 \subsection{Les techniques de distribution}
-  \paragraph{} TODO
+  \includegraphics[scale=0.7]{mongodb/sharded-mongodb.png}\\
 
 \newpage
 \section{Conclusion}
