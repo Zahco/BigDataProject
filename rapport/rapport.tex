@@ -34,29 +34,87 @@
 \section{La base de donnée CouchBase}
 \subsection{Les modalités d’installation}
   \paragraph{Recommandations système} \
-
   \
-  
     \begin{tabular}{|l|l|}
       \hline
       CPU & 6 coeurs 64-bits à 3GHz \\ \hline
       RAM & 16 GB physique          \\ \hline
     \end{tabular}
     TODO
-\subsection{Les méthodes d’insertion de données}
-  \paragraph{} TODO
-\subsection{Le langage de recherche}
-  \paragraph{} TODO
-\subsection{L’indexation interne}
-  \paragraph{} TODO
-\subsection{Le support de la concurrence d’accès}
-  \paragraph{} TODO
-\subsection{L’architecture du système}
-  \paragraph{} TODO
-\subsection{Les techniques de distribution}
-  \paragraph{} TODO
   
+  \paragraph{Installation} \
   
+  L’installation de CouchBase peut se faire via \href{https://www.couchbase.com/}{le site officiel} avec un .dpkg soit en ligne de commande :\\
+  
+  \includegraphics[scale=0.8]{couchBase/install.png}\\
+
+  Le service couchbase-server utilise les ports suivants :\\
+
+  \includegraphics[scale=0.8]{couchBase/ports.png}\\
+  \newpage
+  Le service couchbase-server peut être coupé avec la ligne de code
+
+  \begin{lstlisting}
+  sudo service apt-get couchbase-server stop
+  \end{lstlisting}
+
+\newpage  
+\subsection{Présentation}
+  \paragraph{} 
+  Le service couchbase est disponible à l’adresse localhost:8091/ui/index.html\\
+  
+  \includegraphics[scale=0.2]{couchBase/accueil.png}\\
+  Par défaut, lors de la première utilisation, le service demande un mot de passe pour l’utilisateur Administrator.\\
+ 
+  \includegraphics[scale=0.2]{couchBase/dashboard.png}\\
+
+  Sur le dashboard, on peut voir les statistiques d’utilisation et d’accès à CouchBase.\
+
+  Avant la toute première utilisation, il est nécessaire de créer un Bucket (qui peut être vu comme un cluster) pour pouvoir insérer et manipuler des données.\\
+
+  \includegraphics[scale=0.2]{couchBase/bucket.png}\\
+
+  Ici, j’ai créé un bucket BigDataMainBucket.\\
+
+  \includegraphics[scale=0.2]{couchBase/document.png}\\
+
+\subsection{Programme Java}
+  \paragraph{} 
+  Nous avons développé un programme en Java pour insérer des données dans mon bucket. Le code source est disponible \href{https://github.com/CorentinLeGuen/Data-Mining}{ici}.\
+  
+Une documentation complète et un code riche et détaillé y est présente.
+Le programme repose sur un JDBC CouchBase et sur un parseurJSON fait en java :\\
+
+\includegraphics[scale=0.6]{couchBase/java.png}\\
+
+Après l’insertion d’un élément en JSON, grâce à l’AJAX, le résultat est affiché directement (pas besoin de recharger la page). \\
+
+\includegraphics[scale=0.2]{couchBase/ajoutjava.png}\\
+
+\newpage
+CouchDB permet de visionner directement les documents enregistrés.\\
+
+\includegraphics[scale=0.2]{couchBase/docjava.png}\\
+
+On peut également réaliser des requêtes N1QL sur CouchDB. \\
+
+\includegraphics[scale=0.2]{couchBase/N1ql.png}\\
+
+Le dashboard permet de visionner les opérations réalisées sur le serveur.\\
+
+\includegraphics[scale=0.2]{couchBase/op.png}
+
+\newpage
+
+\subsection{Performances}
+  \paragraph{} 
+  Les performances de CouchDB sont disponibles sur le site d'\href{https://www.arangodb.com/2012/08/benchmarking-arangodb-and-couchdb/}{arangoDB}\\
+
+  \includegraphics[scale=0.6]{couchBase/adb.png}\\
+
+  Voici les performances comparé à Persevere et PHP+Mysql :\\
+
+  \includegraphics[scale=0.6]{couchBase/perf.png}\\
   
 \newpage
 \section{La base de donnée MongoDB}
@@ -168,6 +226,12 @@
 
 \newpage
 \section{Conclusion}
-  \paragraph{} TODO
+  \paragraph{}
+  CouchDB et MongoDB sont des bases de données avec des objectifs différents,
+  MongoDB sera utilisé pour interagir avec une application lié à un JDBC alors que CouchDB sera plus largement utilisé
+  comme une interface REST, grâce à sa construction basé sur du HTTP.\
+  
+  MongoDB est plus rapide que CouchDB, mais ne permet pas son utilisation sur téléphone.\
+  Une base MongoDB pourra être agrandi avec facilité là où CouchDB aura plus de difficulté, mais CouchDB reste le meilleur choix pour une utilisation mobile, avec une réplication maître à maître ou un unique serveur.
   
 \end{document}
